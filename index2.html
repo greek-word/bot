@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>srj source </title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <link rel="stylesheet" href="style2.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+
+    <!-- AUTH MODAL -->
+    <div id="authOverlay" class="auth-overlay"></div>
+    <div id="authModal" class="auth-modal">
+        <div class="auth-content">
+            <div class="auth-header">
+                <h2>GREEK WORD</h2>
+                <p>Sign in to save your conversations</p>
+            </div>
+            <div class="auth-buttons">
+                <button id="googleBtn" class="auth-btn google">
+                    <i class="fab fa-google"></i> Continue with Google
+                </button>
+                <button id="anonymousBtn" class="auth-btn anonymous">
+                    <i class="fas fa-user-secret"></i> Continue as Guest
+                </button>
+            </div>
+            <div class="auth-footer">
+                <p>Your conversations are saved securely</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APP -->
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                   <a style="text-decoration: none;" href="greek-word.github.io">  <span class="logo-icon"><img style="height: 30PX;" src="LOGO.png"></span>
+                   <span class="logo-text">GREEK-WORD</span></a>
+                </div>
+                <!--<button id="newConversationBtn" class="new-chat-btn">
+                    <i class="fas fa-plus"></i> New Chat
+                </button>-->
+            </div>
+            <div class="sidebar-search">
+                <input type="text" id="searchInput" placeholder="Search conversations...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="conversation-list" id="conversationList"></div>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">👤</div>
+                    <div class="user-name" id="userName">Guest</div>
+                    <button id="signOutBtn" class="sign-out-btn" style="display:none">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Chat Main -->
+        <main class="chat-main">
+            <header class="chat-header">
+                <div class="header-left">
+                    <div class="bot-avatar" id="botAvatar">
+                        <img id="botFace" src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f60e/512.webp" alt="Bot">
+                    </div>
+                    <div class="header-info">
+                        <h2 id="conversationTitle"> srj-source by greek-word </h2>
+                        <span id="headerStatus">● offline</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button id="themeToggle" class="header-btn" title="Theme"><i class="fas fa-moon"></i></button>
+                    <button style="visibility: hidden;" id="exportBtn" class="header-btn" title="Export"><i class="fas fa-download"></i></button>
+                    <button id="deleteBtn" class="header-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                </div>
+            </header>
+
+            <div class="messages-area" id="messagesArea"></div>
+
+            <div class="quick-replies" id="quickReplies">
+                <div class="chip" data-query="Tell me about your skills">💡 Skills</div>
+                <div class="chip" data-query="What projects have you built?">🚀 Projects</div>
+                <div class="chip" data-query="How can I contact you?">📬 Contact</div>
+                <div class="chip" data-query="Tell me a joke">😂 Joke</div>
+                <a href=""><div class="chip" >please share feedback</div></a>
+                
+            </div>
+
+            <div class="input-area">
+                <div class="input-actions">
+                    <button id="micBtn" class="input-btn" title="Voice"><i class="fas fa-microphone"></i></button>
+                    <button id="voiceBtn" class="input-btn" title="Speak"><i class="fas fa-volume-up"></i></button>
+                </div>
+                <textarea id="chatInput" rows="1" placeholder="Type your message..."></textarea>
+                <div class="input-right">
+                    <button id="stopBtn" class="input-btn stop-btn" style="display:none"><i class="fas fa-stop"></i></button>
+                    <button id="sendBtn" class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+ <script src="script.js"></script>
+   
+</body>
+</html>
