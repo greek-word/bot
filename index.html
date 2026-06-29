@@ -51,15 +51,22 @@
 
         body {
             font-family: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: var(--bg-primary);
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(220, 214, 247, 0.25) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(168, 230, 207, 0.15) 0%, transparent 60%);
-            color: var(--text-primary);
-            height: 100vh;
-            overflow: hidden;
-            transition: background var(--transition), color var(--transition);
+    background: var(--bg-primary);
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(220, 214, 247, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(168, 230, 207, 0.15) 0%, transparent 60%);
+    color: var(--text-primary);
+    min-height: 100dvh; /* dynamic viewport height */
+    min-height: 100vh; /* fallback */
+    overflow: hidden;
+    transition: background var(--transition), color var(--transition);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
         }
 
         /* Cute Scrollbar */
@@ -78,11 +85,11 @@
         }
 
         .app-container {
-            display: flex;
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-            position: relative;
+           display: flex;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
         }
 
         /* SIDEBAR - Soft & Rounded */
